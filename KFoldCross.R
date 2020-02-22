@@ -28,7 +28,6 @@ KFoldCV <- function(X_mat, y_vec, ComputePredictions, fold_vec)
 # Nearest Neighbors Cross Validation
 NearestNeighborsCV <- function(X_mat, y_vec, X_new, num_folds, max_neighbors)
 {
-  traceback()
   validation_fold_vec <- sample(rep(1:num_folds, l=nrow(X_mat)))
   error_mat <- as.numeric(num_folds, max_neighbors)
   for(num_neighbors in 1:max_neighbors)
@@ -139,7 +138,6 @@ for(validation.fold in 1:n.folds){
     ), by=set]
     err.dt.list[[paste(validation.fold, neighbors)]] <- data.table(
       validation.fold, neighbors, mean.err)
->>>>>>> 5d9cce488402f4f84b74c1552172ac06f6d54b6d
   }
 }
 err.dt <- do.call(rbind, err.dt.list)
