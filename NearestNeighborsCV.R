@@ -8,4 +8,5 @@ NearestNeighborsCV <- function(X_mat, y_vec, X_new, num_folds, max_neighbors)
     rbind(error_mat, KFoldCV(X_mat, y_vec, computePredictions, fold_vec))
     mean_error_vec <- mean(error_mat, num_neighbors)
   }
+  outputList <- list(X_new, mean_error_vec)
 }
