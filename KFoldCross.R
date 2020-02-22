@@ -68,14 +68,15 @@ ggplot()+
     neighbors, mean_error_vec, group=validation.fold),
     data=validation.error)
 
-# compute and visualize test error results
+# compute and visualize test error results:
 err.dt.list <- list()
-# assign folds.
+## assign folds.
 for(test.fold in 1:5){
-  # split into train/test sets.
+  ## split into train/test sets.
   for(algorithm in c("baseline", "1-NN", "NNCV")){
-    # run algorithm and store test error.
-    err.dt.list[[paste(test.fold, algorithm)]] <- data.table( = test.fold, algorithm, error.percent)
+    ## run algorithm and store test error.
+    err.dt.list[[paste(test.fold, algorithm)]] <- data.table(
+      test.fold, algorithm, error.percent)
   }
 }
 err.dt <- do.call(rbind, err.dt.list)
@@ -84,3 +85,4 @@ ggplot()+
   geom_point(aes(
     error.percent, algorithm),
     data=err.dt)
+
